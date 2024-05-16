@@ -17,8 +17,11 @@ class Inventory(BaseModel):
         ]
 
     def add(self, item: Item):
-        self.items.append(item)
-        print(f"Item '{item.name}' adicionado ao inventário")
+        if len(self.items) < self.max_size:
+            self.items.append(item)
+            print(f"Item '{item.name}' adicionado ao inventário")
+        else:
+            print(f"O inventário está cheio. Não foi possível adicionar {item.name}")
 
     def rem(self, item: Item):
         for i, _ in enumerate(self.items):

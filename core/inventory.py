@@ -24,7 +24,8 @@ class Inventory(BaseModel):
             print(f"O inventário está cheio. Não foi possível adicionar {item.name}")
 
     def rem(self, item: Item):
-        for i, _ in enumerate(self.items):
-            if _ == item:
-                del self.items[i]
-        print(f"Item '{item.name}' removido ao inventário")
+        if item in self.items:
+            self.items.remove(item)
+            print(f"Item '{item.name}' removido ao inventário")
+        else:
+            print("O item especificado não está no inventário")

@@ -10,6 +10,10 @@ from core.constants import (
     CRITICAL_MULTIPLIER,
     CRITICAL_INITIAL_PERCENT,
     ATTRIBUTE_INCREMENT,
+    PERSUASION_TOTAL_PERCENT,
+    PERSUASION_INITIAL_PERCENT,
+    PERSUASION_DISCOUNT,
+    PERSUASION_MULTIPLIER,
 )
 
 
@@ -52,6 +56,23 @@ class Player(BaseModel):
             setattr(self.equipment, item.item_type.value, item)
             self.inventory.rem(item)
             print(f"Item {item.name} adicionado ao equipamento")
+
+    def persuasion_discount(self):
+        discount = 0
+        total_persuasion = self.attributes.persuasion
+
+        if self.equipment.weapon:
+            total_persuasion += self.equipment.weapon.persuasion
+
+        rand_persuasion_chance = randint(
+            PERSUASION_INITIAL_PERCENT, PERSUASION_TOTAL_PERCENT
+        )
+        total_persuasion *= PERSUASION_MULTIPLIER
+
+        if rand_persuasion_chance <= total_persuasion:
+            discount = PERSUASION_DISCOUNT
+
+        return discount
 
     def basic_damage_attack(self):
         damage = 0

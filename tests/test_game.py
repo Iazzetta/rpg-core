@@ -9,11 +9,11 @@ import time
 player = Player(id=1, name="ppy")
 
 # definindo os atributos do player
-player.upgrade_attribute("critical")
-player.upgrade_attribute("critical")
-player.upgrade_attribute("critical")
-player.upgrade_attribute("critical")
-player.upgrade_attribute("strength")
+player.upgrade_attribute("persuasion")
+player.upgrade_attribute("persuasion")
+player.upgrade_attribute("persuasion")
+player.upgrade_attribute("persuasion")
+player.upgrade_attribute("persuasion")
 
 # criando uma loja
 store = Store()
@@ -49,8 +49,10 @@ merchant.welcome()
 # comprar o item adaguinha
 merchant.store.buy_item(buyer=player, item_id=1)
 
-# equipando a adaga
+merchant.store.sell_item(seller=player, item_id=1)
+
+# # equipando a adaga
 player.use_item(adaguinha)
 
-# calculando ataque basico
+# # calculando ataque basico
 player.basic_damage_attack()

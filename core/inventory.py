@@ -29,3 +29,11 @@ class Inventory(BaseModel):
             print(f"Item '{item.name}' removido ao inventário")
         else:
             print("O item especificado não está no inventário")
+
+    def get_item(self, item_id: int):
+        try:
+            selected_item = list(filter(lambda i: i.id == item_id, self.items))[0]
+            return selected_item
+        except:
+            print("Item não encontrado no inventário")
+        return False

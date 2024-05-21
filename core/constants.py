@@ -14,3 +14,5 @@ PERSUASION_MULTIPLIER = 2
 PERSUASION_TOTAL_PERCENT = 100
 # porcentagem minima do persuasao (>= 1)
 PERSUASION_INITIAL_PERCENT = 1
+# desvalorização do preço do item
+ITEM_PRICE_DEVALUATION = 30
